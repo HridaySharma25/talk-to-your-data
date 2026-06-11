@@ -1,0 +1,2 @@
+# Evaluation run outputs land here. Timestamped run_*.json files are gitignored;
+# latest_summary.md is committed as evidence of the most recent eval run.

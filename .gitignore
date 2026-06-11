@@ -1,0 +1,50 @@
+# ---- Secrets / environment ----
+.env
+.env.*
+!.env.example
+
+# ---- Data artifacts (regenerable; never committed) ----
+# Raw Olist CSVs are downloaded from Kaggle (see README setup).
+# The SQLite database is a derived artifact built by scripts/01_build_db.py.
+data/raw/*.csv
+data/*.db
+data/*.sqlite
+data/*.sqlite3
+
+# ---- Runtime logs ----
+logs/
+*.log
+
+# ---- Evaluation outputs (keep latest_summary.md; drop timestamped runs) ----
+eval/results/*.json
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ---- Virtual environments ----
+.venv/
+venv/
+env/
+ENV/
+.conda/
+
+# ---- Streamlit ----
+.streamlit/secrets.toml
+
+# ---- IDE / OS cruft ----
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db

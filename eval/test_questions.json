@@ -1,0 +1,242 @@
+[
+  {
+    "id": 1,
+    "question": "How many orders are in the database?",
+    "expected_sql_pattern": "(?is)count\\s*\\(.*from\\s+orders|from\\s+orders.*count\\s*\\(",
+    "expected_row_count_range": [1, 1],
+    "category": "count",
+    "difficulty": "easy"
+  },
+  {
+    "id": 2,
+    "question": "How many distinct products are in the catalog?",
+    "expected_sql_pattern": "(?is)count\\s*\\(.*product",
+    "expected_row_count_range": [1, 1],
+    "category": "count",
+    "difficulty": "easy"
+  },
+  {
+    "id": 3,
+    "question": "How many sellers are located in the state of SP?",
+    "expected_sql_pattern": "(?is)seller_state\\s*=\\s*'sp'",
+    "expected_row_count_range": [1, 1],
+    "category": "count",
+    "difficulty": "easy"
+  },
+  {
+    "id": 4,
+    "question": "What is the total revenue from all delivered orders?",
+    "expected_sql_pattern": "(?is)sum\\s*\\(.*price",
+    "expected_row_count_range": [1, 1],
+    "category": "aggregation",
+    "difficulty": "medium"
+  },
+  {
+    "id": 5,
+    "question": "What is the average review score across all reviews?",
+    "expected_sql_pattern": "(?is)avg\\s*\\(.*review_score",
+    "expected_row_count_range": [1, 1],
+    "category": "aggregation",
+    "difficulty": "easy"
+  },
+  {
+    "id": 6,
+    "question": "What is the average payment value per payment transaction?",
+    "expected_sql_pattern": "(?is)avg\\s*\\(.*payment_value",
+    "expected_row_count_range": [1, 1],
+    "category": "aggregation",
+    "difficulty": "medium"
+  },
+  {
+    "id": 7,
+    "question": "What is the average product price in the health_beauty category?",
+    "expected_sql_pattern": "(?is)health_beauty",
+    "expected_row_count_range": [1, 1],
+    "category": "join",
+    "difficulty": "medium"
+  },
+  {
+    "id": 8,
+    "question": "List the top 10 sellers by number of orders they fulfilled.",
+    "expected_sql_pattern": "(?is)seller_id.*limit\\s+10",
+    "expected_row_count_range": [10, 10],
+    "category": "top_n",
+    "difficulty": "medium"
+  },
+  {
+    "id": 9,
+    "question": "Which 5 products have generated the most revenue?",
+    "expected_sql_pattern": "(?is)product_id.*limit\\s+5",
+    "expected_row_count_range": [5, 5],
+    "category": "top_n",
+    "difficulty": "medium"
+  },
+  {
+    "id": 10,
+    "question": "How many orders were placed in each year?",
+    "expected_sql_pattern": "(?is)strftime\\s*\\(\\s*'%y'",
+    "expected_row_count_range": [3, 3],
+    "category": "time_series",
+    "difficulty": "medium"
+  },
+  {
+    "id": 11,
+    "question": "Show total revenue by month for the year 2018.",
+    "expected_sql_pattern": "(?is)strftime\\s*\\(\\s*'%y-%m'",
+    "expected_row_count_range": [7, 11],
+    "category": "time_series",
+    "difficulty": "medium"
+  },
+  {
+    "id": 12,
+    "question": "What was the month-over-month growth in the number of orders during 2017?",
+    "expected_sql_pattern": "(?is)lag\\s*\\(|over\\s*\\(",
+    "expected_row_count_range": [11, 12],
+    "category": "time_series",
+    "difficulty": "hard"
+  },
+  {
+    "id": 13,
+    "question": "What are the top 5 product categories by total revenue?",
+    "expected_sql_pattern": "(?is)product_category_name_english.*limit\\s+5",
+    "expected_row_count_range": [5, 5],
+    "category": "top_n",
+    "difficulty": "medium"
+  },
+  {
+    "id": 14,
+    "question": "Which 10 cities have the most customers?",
+    "expected_sql_pattern": "(?is)customer_city.*limit\\s+10",
+    "expected_row_count_range": [10, 10],
+    "category": "geographic",
+    "difficulty": "medium"
+  },
+  {
+    "id": 15,
+    "question": "What percentage of all orders have a status of delivered?",
+    "expected_sql_pattern": "(?is)100(\\.0)?\\s*\\*|\\*\\s*100(\\.0)?",
+    "expected_row_count_range": [1, 1],
+    "category": "percentage",
+    "difficulty": "hard"
+  },
+  {
+    "id": 16,
+    "question": "What percentage of payments were made using a credit card?",
+    "expected_sql_pattern": "(?is)credit_card",
+    "expected_row_count_range": [1, 1],
+    "category": "percentage",
+    "difficulty": "hard"
+  },
+  {
+    "id": 17,
+    "question": "How many customers have placed more than one order?",
+    "expected_sql_pattern": "(?is)customer_unique_id",
+    "expected_row_count_range": [1, 1],
+    "category": "cohort",
+    "difficulty": "hard"
+  },
+  {
+    "id": 18,
+    "question": "Who are the top 10 customers by total amount paid?",
+    "expected_sql_pattern": "(?is)customer_unique_id.*limit\\s+10",
+    "expected_row_count_range": [10, 10],
+    "category": "cohort",
+    "difficulty": "hard"
+  },
+  {
+    "id": 19,
+    "question": "What is the total revenue by customer state?",
+    "expected_sql_pattern": "(?is)customer_state",
+    "expected_row_count_range": [20, 27],
+    "category": "geographic",
+    "difficulty": "medium"
+  },
+  {
+    "id": 20,
+    "question": "Which customer state has the highest average freight value?",
+    "expected_sql_pattern": "(?is)avg\\s*\\(.*freight_value",
+    "expected_row_count_range": [1, 1],
+    "category": "geographic",
+    "difficulty": "medium"
+  },
+  {
+    "id": 21,
+    "question": "How many reviews are there for each review score from 1 to 5?",
+    "expected_sql_pattern": "(?is)review_score",
+    "expected_row_count_range": [5, 5],
+    "category": "review",
+    "difficulty": "easy"
+  },
+  {
+    "id": 22,
+    "question": "What is the average review score for each product category?",
+    "expected_sql_pattern": "(?is)review_score.*product_category_name_english|product_category_name_english.*review_score",
+    "expected_row_count_range": [50, 71],
+    "category": "review",
+    "difficulty": "hard"
+  },
+  {
+    "id": 23,
+    "question": "How many 5-star reviews were submitted for orders purchased in 2018?",
+    "expected_sql_pattern": "(?is)review_score\\s*=\\s*5",
+    "expected_row_count_range": [1, 1],
+    "category": "review",
+    "difficulty": "medium"
+  },
+  {
+    "id": 24,
+    "question": "What is the average delivery time in days for delivered orders?",
+    "expected_sql_pattern": "(?is)julianday",
+    "expected_row_count_range": [1, 1],
+    "category": "aggregation",
+    "difficulty": "medium"
+  },
+  {
+    "id": 25,
+    "question": "What proportion of delivered orders arrived later than their estimated delivery date?",
+    "expected_sql_pattern": "(?is)order_estimated_delivery_date",
+    "expected_row_count_range": [1, 1],
+    "category": "percentage",
+    "difficulty": "hard"
+  },
+  {
+    "id": 26,
+    "question": "What are the 5 product categories with the most products in the catalog?",
+    "expected_sql_pattern": "(?is)product_category_name.*limit\\s+5",
+    "expected_row_count_range": [5, 5],
+    "category": "top_n",
+    "difficulty": "medium"
+  },
+  {
+    "id": 27,
+    "question": "How many orders were paid across more than one payment transaction?",
+    "expected_sql_pattern": "(?is)having\\s+count\\s*\\(",
+    "expected_row_count_range": [1, 1],
+    "category": "aggregation",
+    "difficulty": "hard"
+  },
+  {
+    "id": 28,
+    "question": "Which marketing campaign drove the most sales?",
+    "expected_sql_pattern": null,
+    "expected_row_count_range": null,
+    "category": "impossible",
+    "difficulty": "hard"
+  },
+  {
+    "id": 29,
+    "question": "What is the profit margin on each product?",
+    "expected_sql_pattern": null,
+    "expected_row_count_range": null,
+    "category": "impossible",
+    "difficulty": "hard"
+  },
+  {
+    "id": 30,
+    "question": "What is the average age of our customers?",
+    "expected_sql_pattern": null,
+    "expected_row_count_range": null,
+    "category": "impossible",
+    "difficulty": "hard"
+  }
+]
